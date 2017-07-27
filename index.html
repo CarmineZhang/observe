@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>实现对普通对象的变化检测，MVVM模式中的 observer</title>
+    <script type="text/javascript" src="./observe.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function cb(nv, ov, path) {
+        console.log('新值===》', nv, '旧值=====》', ov, "路径===》", path)
+    }
+    var data = {
+        a: 200,
+        level1: {
+            b: 'str',
+            c: [{ w: 90 }, 2, 3],
+            level2: {
+                d: 90
+            }
+        }
+    }
+
+    var j = new Observer(data, cb);
+    data.level1.c.push(4);
+    data.level1.c[0].w = 100;
+    data.level1.b = 'sss';
+    data.level1.level2.d = 'msn';
+    </script>
+</body>
+
+</html>
